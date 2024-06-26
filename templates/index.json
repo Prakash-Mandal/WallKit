@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "template-index": {
+      "type": "template-index",
+      "disabled": true,
+      "settings": {
+        "index_title": ""
+      }
+    },
+    "hero_NjcKrq": {
+      "type": "hero",
+      "custom_css": [
+        ".inner-hero-section .content-banner {background: #dabc80a3 !important;}"
+      ],
+      "settings": {
+        "hero_banner": "shopify:\/\/shop_images\/img_nature_wide.jpg",
+        "hero_title": "Welcome to WallKit",
+        "hero_description": "<p>Providing seamless shopping<\/p>",
+        "hero_button_label": "Shop Now",
+        "hero_button_link": "shopify:\/\/collections\/all"
+      }
+    },
+    "featured_collection_kU7TFn": {
+      "type": "featured-collection",
+      "settings": {
+        "featured_collection": "automated-collection",
+        "title": "Featured Collection"
+      }
+    }
+  },
+  "order": [
+    "template-index",
+    "hero_NjcKrq",
+    "featured_collection_kU7TFn"
+  ]
+}

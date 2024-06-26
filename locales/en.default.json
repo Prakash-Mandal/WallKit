@@ -1,0 +1,86 @@
+{
+  "general": {
+    "Layout": {
+      "login": "Login",
+      "dont_have_account":"Don't have an account?",
+      "logout": "Logout",
+      "register": "Register",
+      "have_account": "Have an account?",
+      "forget_password": "Forget Password",
+      "account": "Account",
+      "profile": "Profile",
+      "fname": "First Name",
+      "lname": "Last Name",
+      "email": "Email Address",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "search": "Search",
+      "search_placeholder": "Search..",
+      "search_results": "Search Results",
+      "no_search_results": "No search Results",
+      "translate": "Translate",
+      "edit" : "Edit",
+      "address": "Address"
+    },
+    "Address" : {
+      "edit_customer": "Update Customer",
+      "edit_address": "Update Address",
+      "add_address": "Add Address",
+      "first_name" : "First Name",
+      "last_name" : "Last Name",
+      "company" : "Company",
+      "address_1" : "Address 1",
+      "address_2" : "Address 2",
+      "address_3" : "Address 3",
+      "city" : "City",
+      "country" : "Country",
+      "province" : "Province Name",
+      "zip_code" : "Zip Code",
+      "phone_number" : "Phone Number",
+    },
+    "404": {
+      "title": "Not found",
+      "subtext_html": "The page you were looking for does not exist"
+    },
+    "product" : {
+      "title": "Product",
+      "prural": "Products"
+    },
+    "cart" : {
+      "title": "Cart",
+      "page_title": "Shopping Cart",
+      "empty_cart": "Cart is empty",
+      "item": "Item",
+      "items": "Items"
+    },
+    "blog" : {
+      "title": "Blog",
+      "prural": "Blogs"
+    },
+    "article": {
+      "title": "Article",
+      "prural": "Articles"
+    },
+    "page":{
+      "title": "Page",
+      "prural": "Pages"
+    }
+  },
+  "pagination" :{
+    "number": {
+      "1" : "1",
+      "2" : "2",
+      "3" : "3",
+      "4" : "4",
+      "5" : "5",
+      "6" : "6",
+      "7" : "7",
+      "8" : "8",
+      "9" : "9",
+      "0" : "0",
+      "previous": "Previous",
+      "prev": "Prev",
+      "next": "Next"
+    }
+  }
+}

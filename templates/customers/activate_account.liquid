@@ -1,0 +1,55 @@
+<!-- /templates/customers/activate_account.liquid -->
+<div class="container my-5 text-center align-items-center">
+  <hi class="lead">Activate Account</hi>
+  <div class="row justify-content-center">
+    {% form 'activate_customer_password' %}
+      {%
+        render 'form-errors'
+        , form: form
+      %}
+
+      <div class="col-6 align-self-center">
+        <div data-mdb-input-init class="form-outline form-floating mb-3 ">
+          <input
+            type="password"
+            id="activate-password"
+            class="form-control form-control-lg"
+            placeholder="Enter password"
+            name="customer[password]">
+          <label class="form-label" for="activate-password">{{ 'general.Layout.password' | t }}</label>
+        </div>
+        <div data-mdb-input-init class="form-outline form-floating mb-3">
+          <input
+            type="password"
+            id="activate-confirm-password"
+            class="form-control form-control-lg"
+            placeholder="Confirm password"
+            name="customer[password_confirmation]">
+          <label class="form-label" for="activate-confirm-password">{{ 'general.Layout.confirm_password' | t }}</label>
+        </div>
+      </div>
+
+      <div class="col-12">
+
+        <div class="action_bottom">
+          <button
+            type="submit"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;">
+            Activate Account
+          </button>
+          <input
+            type="submit"
+            name="decline"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="btn btn-warning btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;"
+            value="Decline Invitation" />
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>

@@ -1,0 +1,188 @@
+<!-- Redirect customer with a login session -->
+<!-- Do Something -->
+
+
+<div class="container">
+  <h1>My Addresses</h1>
+  <button
+    class="btn btn-primary rounded-0"
+    data-bs-toggle="modal"
+    data-bs-target="#newAddressModal">Create new address</button>
+  <div class="row row-cols-md-4 row-cols-1 my-5 gx-2">
+    {% for address in customer.addresses %}
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            {{ address | format_address }}
+          </div>
+          <div class="card-footer">
+            <form
+              action="/account/addresses/{{address.id}}"
+              method="post"
+              data-confirm-message="Delete Address">
+              <input
+                type="hidden"
+                name="_method"
+                value="delete">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<!-- Address Modal form -->
+<div
+  class="modal fade"
+  id="newAddressModal"
+  tabindex="-1"
+  aria-labelledby="newAddressModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="newAddressModalLabel" class="modal-title text-center">{{ 'general.Address.add_address' | t }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col m-2">
+            {% form 'customer_address'
+              , customer.new_address %}
+              {%
+                render 'form-errors'
+                , form: form
+              %}
+              <!-- First Name input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-first-name"
+                  class="form-control form-control-lg"
+                  placeholder="First Name"
+                  name="address[first_name]"
+                  value="{{form.first_name}}">
+                <label class="form-label" for="address-first-name">{{ 'general.Address.first_name' | t }}</label>
+              </div>
+              <!-- Last Name input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-last-name"
+                  class="form-control form-control-lg"
+                  placeholder="Last Name"
+                  name="address[last_name]"
+                  value="{{form .last_name}}">
+                <label class="form-label" for="address-last-name">{{ 'general.Address.last_name' | t }}</label>
+              </div>
+              <!-- Company input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-company"
+                  class="form-control form-control-lg"
+                  placeholder="Company"
+                  name="address[company]"
+                  value="{{form.company}}">
+                <label class="form-label" for="address-company">{{ 'general.Address.company' | t }}</label>
+              </div>
+              <!-- Address 1 input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-address-1"
+                  class="form-control form-control-lg"
+                  placeholder="Address 1"
+                  name="address[address1]"
+                  value="{{form.address1}}">
+                <label class="form-label" for="address-address-1">{{ 'general.Address.address_1' | t }}</label>
+              </div>
+              <!-- Address 2 input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-address-2"
+                  class="form-control form-control-lg"
+                  placeholder="Address 2"
+                  name="address[address2]"
+                  value="{{form.address2}}">
+                <label class="form-label" for="address-address-2">{{ 'general.Address.address_2' | t }}</label>
+              </div>
+              <!-- City Name input -->
+              <div data-mdb-input-init class=" form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-city-name"
+                  class="form-control form-control-lg"
+                  placeholder="{{'general.Address.city' | t}}"
+                  name="address[city]"
+                  value="{{form.city}}">
+                <label class="form-label" for="address-city-name">{{ 'general.Address.city' | t }}</label>
+              </div>
+              <!-- Country input -->
+              <div data-mdb-input-init class=" form-outline form-floating mb-4">
+                <select
+                  id="address-country"
+                  class="form-select form-control-lg"
+                  name="address[country]">{{ all_country_option_tags }}</select>
+                <label class="form-label" for="address-country">{{ 'general.Address.country' | t }}</label>
+              </div>
+              <!-- Province input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <select
+                  type="text"
+                  id="address-province"
+                  class="form-select form-control-lg"
+                  placeholder="{{'general.Address.province' | t}}"
+                  name="address[province]"
+                  disabled></select>
+                <label class="form-label" for="address-province">{{ 'general.Address.province' | t }}</label>
+              </div>
+              <!-- Zip Code input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="text"
+                  id="address-zip-code"
+                  class="form-control form-control-lg"
+                  placeholder="{{'general.Address.zip_code' | t}}"
+                  name="address[zip]"
+                  value="">
+                <label class="form-label" for="address-zip-code">{{ 'general.Address.zip_code' | t }}</label>
+              </div>
+              <!-- Phone Number input -->
+              <div data-mdb-input-init class="form-outline form-floating mb-4">
+                <input
+                  type="tel"
+                  id="address-phone-number"
+                  class="form-control form-control-lg"
+                  placeholder="{{'general.Address.phone_number' | t}}"
+                  name="address[phone]"
+                  value="">
+                <label class="form-label" for="address-phone-number">{{ 'general.Address.phone_number' | t }}</label>
+              </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button
+                  type="submit"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                  {{ 'general.Address.add_address' | t }}
+                </button>
+              </div>
+
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

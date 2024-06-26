@@ -1,0 +1,69 @@
+<div class="sidebar-section">
+  {% for block in section.blocks %}
+    {% assign item = block.settings %}
+    {% if block.type == 'image' %}
+      <div class="mb-4 card">
+        <p class="card-header">{{ item.title }}</p>
+        <a class="card-body" href="{{item.url}}">
+          <img
+            class="w-100"
+            src="{{item.image |  img_url: 'master'}}"
+            alt="{{item.image.alt}}"></a>
+      </div>
+    {% else %}
+      <div class="mb-4 border border-info p-2">
+        <h6 class="text-center">{{ item.title }}</h6>
+        <p>{{ item.description }}</p>
+      </div>
+    {% endif %}
+
+  {% endfor %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Sidebar",
+    "settings": [],
+    "blocks": [
+      {
+        "name": "Sidebar Image",
+        "type": "image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Sidebar Title"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }
+        ]
+      }, {
+        "name": "Sidebar Text",
+        "type": "text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Sidebar Title"
+          }, {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>This is adescription</p>"
+          }
+        ]
+      }
+    ]
+
+  }
+{% endschema %}

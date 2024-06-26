@@ -1,0 +1,45 @@
+{
+  "general": {
+    "404": {
+      "title": "Pas trouvé",
+      "subtext_html": "La page que vous cherchiez n'existe pas"
+    },
+    "cart": {
+      "item": "Article",
+      "items": "Articles",
+      "title": "Chariot",
+      "page_title": "Panier",
+      "empty_cart": "Le panier est vide"
+    },
+    "Layout": {
+      "login": "Se connecter",
+      "logout": "Se déconnecter",
+      "register": "Registre",
+      "password": "Mot de passe",
+      "forget_password": "Mot de passe oublié",
+      "account": "Compte",
+      "profile": "Profil",
+      "search": "Recherche",
+      "search_placeholder": "Recherche..",
+      "search_results": "Résultats de recherche",
+      "no_search_results": "Aucun résultat trouvé"
+    },
+    "blog": {
+      "prural": "Blogues"
+    },
+    "article": {
+      "prural": "Des articles"
+    },
+    "product": {
+      "title": "Produit",
+      "prural": "Des produits"
+    }
+  },
+  "pagination": {
+    "number": {
+      "previous": "Précédent",
+      "prev": "Précédent",
+      "next": "Suivant"
+    }
+  }
+}

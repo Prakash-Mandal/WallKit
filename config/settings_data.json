@@ -1,0 +1,138 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "light": {
+        "type": "light",
+        "settings": {
+          "custom_text_title": "Title",
+          "custom_text_body": "<p>Add your text here<\/p>"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "hero_title": "Example Heading",
+          "hero_description": "",
+          "hero_button_label": "",
+          "hero_button_link": ""
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "faq_zPiVeV": {
+            "type": "faq",
+            "settings": {
+              "title": "FAQ Title Example",
+              "answer": "<p>FAQ Answer Example<\/p>"
+            }
+          },
+          "faq_6dKCKQ": {
+            "type": "faq",
+            "settings": {
+              "title": "FAQ Title Example",
+              "answer": "<p>FAQ Answer Example<\/p>"
+            }
+          },
+          "faq_JTDpjy": {
+            "type": "faq",
+            "settings": {
+              "title": "FAQ Title Example",
+              "answer": "<p>FAQ Answer Example<\/p>"
+            }
+          },
+          "faq_XXUCtx": {
+            "type": "faq",
+            "settings": {
+              "title": "FAQ Title Example",
+              "answer": "<p>FAQ Answer Example<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "faq_zPiVeV",
+          "faq_6dKCKQ",
+          "faq_JTDpjy",
+          "faq_XXUCtx"
+        ],
+        "settings": {}
+      },
+      "sidebar": {
+        "type": "sidebar",
+        "blocks": {
+          "image_aKqXW4": {
+            "type": "image",
+            "settings": {
+              "title": "Sidebar Title",
+              "image": "shopify:\/\/shop_images\/Main_d624f226-0a89-4fe1-b333-0d1548b43c06.jpg",
+              "url": "shopify:\/\/blogs\/news"
+            }
+          },
+          "text_AePCT8": {
+            "type": "text",
+            "settings": {
+              "title": "Sidebar Title",
+              "description": "<p>This is adescription<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "image_aKqXW4",
+          "text_AePCT8"
+        ],
+        "settings": {}
+      },
+      "footer-section": {
+        "type": "footer-section",
+        "blocks": {
+          "text_MkdHyd": {
+            "type": "text",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/theme_cover_image.jpg",
+              "title": "WallKit",
+              "decsription": "<p>Welcome to the <a href=\"\/collections\/frontpage\" title=\"Home page\">store<\/a><br\/><br\/><strong>Address : <br\/><\/strong>Village, town, City, State,<br\/>Country - 1000001<br\/><br\/><strong>Phone Number : <\/strong><br\/><em>213-617-5452<\/em><br\/><\/p><p><strong>Email : <\/strong><em>Contact@Store.com<\/em><br\/><\/p>"
+            }
+          },
+          "link_list_VMrWrd": {
+            "type": "link_list",
+            "settings": {
+              "title": "Quick Links",
+              "menu": "footer"
+            }
+          },
+          "link_list_LKeMVm": {
+            "type": "link_list",
+            "settings": {
+              "title": "Quick Help",
+              "menu": "help"
+            }
+          },
+          "link_list_HkMqNf": {
+            "type": "link_list",
+            "settings": {
+              "title": "Quick Links",
+              "menu": "main-menu"
+            }
+          }
+        },
+        "block_order": [
+          "text_MkdHyd",
+          "link_list_VMrWrd",
+          "link_list_LKeMVm",
+          "link_list_HkMqNf"
+        ],
+        "settings": {
+          "col_num": 4
+        }
+      }
+    },
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {}
+  }
+}

@@ -1,0 +1,24 @@
+{% form 'localization'
+  , id: 'localization_form_tag'
+  , class: 'd-inline-block w-25' %}
+  <div class="navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <button
+          class="btn btn-dark dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {{ 'general.Layout.translate' | t }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          {% for locale in shop.published_locales %}
+            <li>
+              <a class="dropdown-item" href="{{locale.root_url}}">{{ locale.endonym_name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+{% endform %}

@@ -1,0 +1,18 @@
+<section>
+  <div class="container p-5 m-5">
+    {{ section.settings.index_title }}
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "index template",
+    "settings": [
+      {
+        "id": "index_title",
+        "type": "text",
+        "label": "Index Title",
+        "default": "This is INDEX."
+      }
+    ]
+  }
+{% endschema %}

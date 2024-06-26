@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4 mb-4 border-2 border-top-0 border-start-0 border-end-0 border-primary text-light">
+  <div class="container-fluid row mx-5">
+    <div class="col-2">
+      <a
+        class="nav-link"
+        class="navbar-brand"
+        href="#">WallKit</a>
+    </div>
+    <div class="col-5">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse px-5" id="navbarNav">
+        <ul class="navbar-nav">
+          {% for link in linklists['main-menu'].links %}
+            {% assign child_list_handle = link.title | handleize %}
+            {% if linklists[child_list_handle].links != blank %}
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="{{ link.url }}"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  {{- link.title -}}
+                </a>
+                <ul class="dropdown-menu">
+                  {% for childlink in linklists[child_list_handle].links %}
+                    <li>
+                      <a class="dropdown-item" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </li>
+                  {% endfor -%}
+                </ul>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-2 inline-items">
+
+      <form
+        action="/search"
+        method="get"
+        class="form d-inline"
+        role="search">
+        <input
+          class="form-control"
+          type="text"
+          name="q"
+          value="{{search.terms |  escape}}"
+          id="search-query"
+          placeholder="{{'general.Layout.search_placeholder' | t}}">
+      </form>
+    </div>
+    <div class="col-3 inline-items align-self-center">
+      <a class="nav-link d-inline me-4" href="/cart">{{ 'general.cart.title' | t }}
+        <i class="fa-solid fa-cart-arrow-down"></i>
+        <span id="cart-count" class="badge bg-secondary"></span>
+      </a>
+
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          {% if customer.has_avatar? %}
+            <a class="nav-link d-inline mx-2" href="{{routes.account_url}}">{{ customer | avatar }}</a>
+          {% else %}
+            <a class="nav-link d-inline mx-2" href="{{routes.account_url}}">Account</a>
+          {% endif %}
+          {{ 'Logout' | customer_logout_link | replace: '<a', '<a class="nav-link d-inline"' }}
+        {% else %}
+          {{ 'general.Layout.login' | t | customer_login_link | replace: '<a', '<a class="nav-link d-inline mx-2"' }}
+          {{ 'Register' | customer_register_link | replace: '<a', '<a class="nav-link d-inline mx-2"' }}
+
+        {% endif %}
+    {% endif %}
+
+      <!-- Translations -->
+      {% render 'translations' %}
+      <a
+        class="hidden d-none"
+        href="!#"
+        id="localeInfo"
+        locale="{{request.locale.iso_code}}"></a>
+
+    </div>
+  </div>
+</nav>
+
+
+{% schema %}
+  {
+    "name": "Header Menu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "site-title",
+        "label": "Site Title",
+        "default": "WallKit"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Header",
+        "category": "Header Menu"
+      }
+    ]
+  }
+{% endschema %}

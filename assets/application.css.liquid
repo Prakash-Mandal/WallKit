@@ -1,0 +1,122 @@
+/* Put your styles in this file.
+   Note: "@import" rules aren’t supported. */
+
+html,
+body {
+}
+
+.inner-hero-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+
+.inner-hero-section img,
+.inner-hero-section svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+
+  /* Set a specific height */
+  /* height: 100%; */
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.inner-hero-section .content-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #9400ff21;
+}
+
+.inner-hero-section .content-404-banner {
+  background: blanchedalmond;
+}
+
+/* Login Form */
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+/* Translations */
+
+@media only screen and (max-width: 600px) {
+   #shopify-section-translations {
+      display: none;
+   }
+}
+@media only screen and (min-width: 600px) {
+   .dropup {
+      position: relative;
+      display: inline-block;
+    }
+  .localeBtn {
+    /* background-color: #3298dd; */
+    background-color: #00000045;
+    color: #fff;
+    padding: 0px;
+    font-size: 0px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    border-radius: 10%;
+    min-width: 55px;
+    min-height: 55px;
+    box-shadow: -1px 0px 20px 0px #00000066;
+  }
+  .localeBtn img {
+   width: 50px;
+   height: 50px;
+   border-radius: 10%;
+   position: absolute;
+   top: 2.5px;
+   left: 2.5px;
+  }
+  .dropup-content {
+    display: none;
+    position: fixed;
+    bottom: 75px;
+    right: 0px;
+    min-width: 100px;
+    border-radius: 5%;
+    z-index: 1;
+    background-color: #00ffa399;
+  }
+  .dropup:hover .dropup-content {
+    display: block;
+  }
+  .dropup-content a {
+    color: #000;
+    font-size: small;
+    padding: 10px 10px 5px 10px;
+    display: block;
+    text-align: center;
+  }
+  .dropup-content a:hover {
+   background-color: aqua;
+  }
+
+}

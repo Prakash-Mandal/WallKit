@@ -1,0 +1,69 @@
+<section class="inner-hero-section container-fluid py-5 w-100 g-0">
+  <div class="container-fluid py-5 image-banner">
+    {% if section.settings.hero_banner != blank %}
+      <img
+        id="hero-image"
+        src="{{ section.settings.hero_banner | img_url: 'master' }}"
+        width="auto"
+        height="auto"
+        alt="Image Banner">
+    {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {% assign i = 10 %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder_svg' }}
+    {% endif %}
+
+    <div class="row py-1">
+      <div class="col-lg-4 col-md-6 mx-auto content-banner">
+        <div class=" p-lg-2 mx-auto my-3">
+          <h1 class="display-5 fw-normal">{{ section.settings.hero_title }}</h1>
+          <span class="lead fw-normal">{{ section.settings.hero_description }}</span>
+          <a class="btn btn-outline-secondary" href="{{section.settings.hero_button_link}}">{{ section.settings.hero_button_label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "class": "hero-section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "hero_banner",
+        "label": "Hero Banner"
+      },
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Heading Title",
+        "default": "Example Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "hero_description",
+        "label": "Heading Description",
+        "default": "<p>This is a Example Paragraph</p>"
+      },
+      {
+        "type": "text",
+        "id": "hero_button_label",
+        "label": "Heading Button Label",
+        "default": "Shop Now"
+      }, {
+        "type": "url",
+        "id": "hero_button_link",
+        "label": "Heading Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Section",
+        "category": "Hero Sections",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}

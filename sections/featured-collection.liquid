@@ -1,0 +1,56 @@
+<section class="container">
+  <h2 class="px-4 mt-5 text-center">{{ section.settings.title }}</h2>
+  <hr>
+  <div class="row row-cols-4 row-cols-md-3 row-cols-sm-2 g-4 m-1 p-1 items-center" >
+    {% for product in collections[section.settings.featured_collection].products %}
+        {% assign image = product.featured_media.preview_image %}
+      <div class="col ">
+        <div class="card">
+            {% if image != blank %}
+                <img
+                src="{{ image | img_url: 'medium' }}"
+                class="card-img-top"
+                alt="{{product.handle}}">
+                {% else %}
+                    {{ 'product-1' |  placeholder_svg_tag: 'card-img-top' }}
+            {% endif %}
+          
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{product.url}}" class="link-info-hover link-success link-opacity-100-hover link-opacity-75 link-offset-2-hover link-underline-opacity-0 link-underline-opacity-100-hover ">{{ product.title }}</a></h5>
+            <h6>
+              <strike>{{ product.price_max | money }}</strike>&nbsp;&nbsp;{{ product.price | money_without_currency }}</h6>
+            <p class="card-text">{{ product.content }}</p>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+</section>
+{% schema %}
+  {
+    "name": "Featured Collection",
+    "class": "featured-collection-section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Collection"
+      }, {
+        "type": "text",
+        "id": "title",
+        "default": "Featured Collection",
+        "label": "Title"
+      }
+
+    ],
+    "presets": [
+      {
+        "name": "Featured Collection",
+        "category": "Collection",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}

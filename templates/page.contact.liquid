@@ -1,0 +1,54 @@
+<div class="row">
+<h1 class="display-4 text-center">{{ page.title }}</h1>
+<div class="col-3"></div>
+<div class="col-6 justify-content-center w-50">
+{% form 'contact' %}
+
+  {% if form.posted_successfully? %}
+    Thank you for your contact
+  {% endif %}
+  {{ form.errors | default_errors }}
+  <div class="mb-3">
+    <label class="form-label" for="ContactFormName">Name</label>
+    <input
+      class="form-control"
+      type="text"
+      id="ContactFormName"
+      name="contact[name]"
+      placeholder="Name">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="ContactFormEmail">Email</label>
+    <input
+      class="form-control"
+      type="email"
+      id="ContactFormEmail"
+      name="contact[email]"
+      placeholder="abc@xyz.com">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="ContactFormPhone">Phone</label>
+    <input
+      class="form-control"
+      type="tel"
+      id="ContactFormPhone"
+      name="contact[phone]"
+      placeholder="010 1 718 222 2222">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="ContactFormMessage">Message</label>
+    <textarea class="form-control"
+      rows="10"
+      id="ContactFormMessage"
+      name="contact[body]" placeholder="Your Message"></textarea>
+  </div>
+  <button
+    class="btn btn-primary form-control"
+    type="submit"
+    value="send">
+    Send
+    </button>
+{% endform %}
+</div>
+<div class="col-3"></div>
+</div>

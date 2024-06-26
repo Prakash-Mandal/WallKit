@@ -1,0 +1,12 @@
+{% form 'localization'
+  , id: 'localization_form_tag'
+  , class: 'dropup' %}
+  <div class="localeBtn">
+    <img src="{{'LanguageIcon-selection-884x1024.jpg'| asset_img_url}}" width="50" height="50">
+  </div>
+  <div class="dropup-content">
+    {% for locale in shop.published_locales %}
+      <a href="{{locale.root_url}}">{{ locale.endonym_name }}</a>
+    {% endfor %}
+  </div>
+{% endform %}

@@ -1,0 +1,103 @@
+<p class="my-5"></p>
+<hr>
+<footer class="footer-section">
+  <div class="container">
+    <div class="row row-cols-{{section.settings.col_num}}">
+      {% for block in section.blocks %}
+        {% assign item = block.settings %}
+        {% if block.type == 'link_list' %}
+
+          <div class="col border-0 border-end-2 border-info">
+            <h5>{{ item.title }}</h5>
+            {% assign footer_linklist = item.menu %}
+            <ul class="list-unstyled text-small">
+              {% for link in linklists[footer_linklist].links %}
+                <li>
+                  <a href="{{link.url}}">{{ link.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% elsif block.type == 'text' %}
+          <div class="col border-0 border-end-2 border-info">
+            <img src="{{item.logo |  img_url: 'small'}}" alt="{{item.logo.alt}}">
+            <h5>{{ item.title }}</h5>
+            <p>{{ item.decsription }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% if section.settings.payments %}
+    <div class="container d-flex justify-content-center mb-4">
+      {% for payment_type in shop.enabled_payment_types %}
+        <img
+        class="me-2"
+          src="{{payment_type| payment_type_img_url}}"
+          alt=""
+          width="100"
+          height="100">
+      {% endfor %}
+    </div>
+  {% endif %}
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "link_list",
+        "name": "Navigation",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Quick Links"
+          }, {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+          }
+        ]
+      }, {
+        "type": "text",
+        "name": "Store Details",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Store Logo"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "WallKit"
+          }, {
+            "type": "richtext",
+            "id": "decsription",
+            "label": "Store Details"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "range",
+        "id": "col_num",
+        "default": 3,
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "label": "Number of columns"
+      }, {
+        "type": "checkbox",
+        "id": "payments",
+        "label": "Display Payment options in footer",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,62 @@
+<!-- Redirect customer with a login session  -->
+<!-- Do Something -->
+
+<!-- Register form  -->
+
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <h3 class="display-4 text-center mb-4">{{ 'general.Layout.register' | t }}</h3>
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        {{ 'collection-1' | placeholder_svg_tag: 'placeholder_svg img-fluid' }}
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        {% form 'create_customer' %}
+        {%
+        render 'form-errors'
+        , form: form
+        %}
+
+        <!-- First Name -->
+        <div data-mdb-input-init class="form-outline form-floating mb-4">
+          <input type="text" id="register-first-name" class="form-control form-control-lg"
+            placeholder="Enter a valid email address" name="customer[first_name]">
+          <label class="form-label" for="register-first-name">{{ 'general.Layout.fname' | t }}</label>
+        </div>
+
+        <!-- Last Name -->
+        <div data-mdb-input-init class="form-outline form-floating mb-4">
+          <input type="text" id="register-last-name" class="form-control form-control-lg"
+            placeholder="Enter a valid email address" name="customer[last_name]">
+          <label class="form-label" for="register-last-name">{{ 'general.Layout.fname' | t }}</label>
+        </div>
+
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline form-floating mb-4">
+          <input type="email" id="login-email" class="form-control form-control-lg"
+            placeholder="Enter a valid email address" name="customer[email]">
+          <label class="form-label" for="login-email">{{ 'general.Layout.email' | t }}</label>
+        </div>
+
+        <!-- Password input -->
+        <div data-mdb-input-init class="form-outline form-floating mb-3">
+          <input type="password" id="login-password" class="form-control form-control-lg" placeholder="Enter password" name="customer[password]">
+          <label class="form-label" for="login-password">{{ 'general.Layout.password' | t }}</label>
+        </div>
+
+        <div class="text-center text-lg-start mt-4 pt-2">
+          <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;">
+            {{ 'general.Layout.register' | t }}
+          </button>
+          <p class="small fw-bold mt-2 pt-1 mb-0">
+            {{ 'general.Layout.have_account' | t }}
+            <a href="{{routes.account_login_url}}" class="link-primary">{{ 'general.Layout.login' | t
+              }}</a>
+          </p>
+        </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
