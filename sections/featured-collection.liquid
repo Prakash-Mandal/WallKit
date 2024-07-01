@@ -1,7 +1,7 @@
 <section class="container">
   <h2 class="px-4 mt-5 text-center">{{ section.settings.title }}</h2>
   <hr>
-  <div class="row row-cols-4 row-cols-md-3 row-cols-sm-2 g-4 m-1 p-1 items-center" >
+  <div class="row row-cols-{{section.settings.paginate_product_num}} row-cols-md-{{section.settings.paginate_product_num-1}} row-cols-sm-{{section.settings.paginate_product_num-2}} g-4 m-1 p-1 items-center" >
     {% for product in collections[section.settings.featured_collection].products %}
         {% assign image = product.featured_media.preview_image %}
       <div class="col ">
@@ -42,6 +42,15 @@
         "id": "title",
         "default": "Featured Collection",
         "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "paginate_product_num",
+        "label": "Number of display products",
+        "default": 4,
+        "min": 2,
+        "max": 10,
+        "step": 1
       }
 
     ],

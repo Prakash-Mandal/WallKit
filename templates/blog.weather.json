@@ -1,0 +1,48 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+    "sections": {
+      "template": {
+        "type": "template-blog-weather",
+        "blocks": {
+          "banner_image": {
+            "type": "banner_image",
+            "settings": {
+            }
+          },
+          "title": {
+            "type": "title",
+            "settings": {
+            }
+          },
+          "meta": {
+            "type": "meta",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "banner_image",
+          "title",
+          "meta"
+        ],
+        "settings": {
+        }
+      },      
+      "sidebar": {
+        "type": "sidebar"
+    }
+    },
+    "order": [
+      "template",
+      "sidebar"
+    ]
+  }
+  

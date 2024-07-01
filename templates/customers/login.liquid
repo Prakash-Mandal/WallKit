@@ -50,8 +50,12 @@
                 Remember me
               </label>
             </div>
-            <a href="{{routes.account_recover_url}}" class="text-body">{{ 'general.Layout.forget_password' | t
-}}?</a>
+            <button
+                type="button"
+                class="btn text-body"
+                data-bs-toggle="modal"
+                data-bs-target="#recoverAccountModal">{{ 'general.Layout.forget_password' | t
+                }}</button>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">

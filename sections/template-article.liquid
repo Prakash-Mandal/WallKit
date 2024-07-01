@@ -1,0 +1,143 @@
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count %}
+{% endif %}
+
+{% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
+{% capture date %}<time datetime="{{ article.published_at | date: '%d-%m-%Y' }}">{{ article.published_at | date: format: 'abbreviated_date'  }}</time>{% endcapture %}
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'featured_image' %}
+        {% if article.image != blank %}
+          <img
+            src="{{article.image| image_url: width: 1024 }}"
+            class="img-fluid rounded w-100 my-2"
+            alt=""
+            width=""
+            height="">
+        {% endif %}
+      {% when 'title' %}
+        <div class="article-title my-2">
+          <h1 class="display-4">{{ article.title }}</h1>
+        </div>
+      {% when 'meta' %}
+        <div class="article-meta my-2">
+          <figcaption class="blockquote-footer">
+            By {{ author }} published on {{ date }}
+          </figcaption>
+        </div>
+      {% when 'content' %}
+        <div class="my-2">{{ article.content }}</div>
+        {% else %}
+
+    {% endcase %}
+  {% endfor %}
+
+  <div class="comment-section">
+    {% if blog.comments_enabled? %}
+      <h2>
+        {{ number_of_comments }} comment{% if number_of_comments > 1 %}s{% endif %}
+      </h2>
+      <div class="article-comments">
+        {% paginate article.comments by 5 %}
+          {% for comment in article.comments %}
+            <div class="card shadow rounded-0 my-3">
+              <div class="card-header">
+                <strong>By</strong>
+                {{ comment.author }}
+                <strong>on</strong>
+                {{ comment.created_at | date: format: 'long' }}
+              </div>
+              <div class="card-body">
+                <div class="card-title">{{ comment.content }}</div>
+              </div>
+            </div>
+          {% endfor %}
+          {% render 'pagination' | paginate: paginate %}
+        {% endpaginate %}
+      </div>
+      <hr>
+      <div class="article-comment-form">
+        {% form 'new_comment'
+          , article %}
+          {% render 'form-errors'
+            , form: form %}
+
+          <div class="my-5 p-2 bg-light shadow">
+            <h6>Post a Comment</h6>
+            <div class="form-floating my-2">
+              <input
+                class="form-control"
+                type="text"
+                name="comment[author]"
+                id="CommentAuthor"
+                placeholder="name"
+                value="{{ form.author }}"
+                autocapitalize="words"><label for="CommentAuthor">name</label>
+            </div>
+
+            <div class="form-floating my-2">
+              <input
+                class="form-control"
+                type="email"
+                name="comment[email]"
+                id="CommentEmail"
+                placeholder="email"
+                value="{{ form.email }}"
+                autocorrect="off"
+                autocapitalize="off">
+              <label for="CommentEmail">email</label>
+            </div>
+
+            <div class="form-floating my-2">
+              <textarea
+                class="form-control h-25"
+                name="comment[body]"
+                id="CommentBody"
+                rows="4"
+                cols="10"
+                placeholder="message">{{ form.body }}</textarea>
+              <label for="CommentBody">message</label>
+            </div>
+
+            <input
+              class="btn btn-primary my-2"
+              type="submit"
+              value="post">
+          </div>
+        {% endform %}
+      </div>
+    {% endif %}
+
+
+  </div>
+</article>
+
+{% schema %}
+  {
+    "name": "Article Section",
+    "class": "col-md-8 col-12",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "featured_image",
+        "name": "Featured Image",
+        "limit": 1
+      }, {
+        "type": "title",
+        "name": "Article Title",
+        "limit": 1
+      }, {
+        "type": "meta",
+        "name": "Article Meta",
+        "limit": 1
+      }, {
+        "type": "content",
+        "name": "Article Content",
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}

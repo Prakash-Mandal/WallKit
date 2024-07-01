@@ -1,9 +1,33 @@
 /* Put your styles in this file.
    Note: "@import" rules aren’t supported. */
 
-html,
-body {
+
+/** Defaults **/
+
+img {
+  object-fit: cover;
+  object-position: inherit;
 }
+
+/** Defaults **/
+
+.vh-10 {
+  height: 10vh !important;
+}
+
+.vh-15 {
+  height: 15vh !important;
+}
+
+.vh-30 {
+  height: 30vh !important;
+}
+
+.vh-55 {
+  height: 55vh !important;
+}
+
+/** Hero Section **/
 
 .inner-hero-section {
   position: relative;
@@ -64,15 +88,17 @@ body {
 /* Translations */
 
 @media only screen and (max-width: 600px) {
-   #shopify-section-translations {
-      display: none;
-   }
+  #shopify-section-translations {
+    display: none;
+  }
 }
+
 @media only screen and (min-width: 600px) {
-   .dropup {
-      position: relative;
-      display: inline-block;
-    }
+  .dropup {
+    position: relative;
+    display: inline-block;
+  }
+
   .localeBtn {
     /* background-color: #3298dd; */
     background-color: #00000045;
@@ -87,14 +113,16 @@ body {
     min-height: 55px;
     box-shadow: -1px 0px 20px 0px #00000066;
   }
+
   .localeBtn img {
-   width: 50px;
-   height: 50px;
-   border-radius: 10%;
-   position: absolute;
-   top: 2.5px;
-   left: 2.5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
   }
+
   .dropup-content {
     display: none;
     position: fixed;
@@ -105,9 +133,11 @@ body {
     z-index: 1;
     background-color: #00ffa399;
   }
+
   .dropup:hover .dropup-content {
     display: block;
   }
+
   .dropup-content a {
     color: #000;
     font-size: small;
@@ -115,8 +145,25 @@ body {
     display: block;
     text-align: center;
   }
+
   .dropup-content a:hover {
-   background-color: aqua;
+    background-color: aqua;
   }
 
+}
+
+.article-blog-img {
+  width: 240px;
+  height: 240px;
+}
+
+.sidebar-anchor {
+  min-height: 800px;
+  overflow: hidden;
+}
+
+.sidebar-anchor .sidebar-image {
+  width: fit-content;
+  height: 800px;
+  transform: translate(-50%, 0);
 }

@@ -1,0 +1,104 @@
+<div class="position-relative text-center bg-light mx-auto">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'banner_image' %}
+          {% if section.settings.banner_image != blank %}
+            {{ section.settings.banner_image | image_url: width: 600 | image_tag }}
+          {% else %}
+            {{ 'blog-apparel-1' | placeholder_svg_tag: 'img-fluid' }}
+          {% endif %}
+        {% when 'title' %}
+          <h1 class="display-4">{{ blog.title }}</h1>
+        {% when 'meta' %}
+          <p class="lead">Read our latest publication</p>
+          {% else %}
+      {% endcase %}
+    {% endfor %}
+</div>
+
+<div class="container mx-auto my-2 align-self-center">
+  {% paginate blog.articles by section.settings.paginate_article_num , window_size:2 %}
+    
+    <div class="row row-cols-md-{{section.settings.paginate_article_num}} row-cols-{{section.settings.paginate_article_num}} align-self-center mx-auto">
+      {% for article in blog.articles %}
+        {% assign image = article.image %}
+
+        <div class="col">
+          <div class="card shadow">
+            <div class="col card-img-top h-25 pt-3 align-self-center justify-content-center text-center">
+              <figure class="figure article-blog-img">
+                {% if image != blank %}
+                  <img
+                    src="{{ image | image_url: width: 240 }}"
+                    class="card-img-top"
+                    alt="{{article.image.alt}}"
+                    width=""
+                    height="">
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'card-img-top article-blog-img' }}
+                {% endif %}
+              </figure>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h2>
+              <h6 class="card-subtitle">{{ article.author }} @ {{ article.created_at }}</h6>
+              <p class="card-text my-2">
+                {% if article.excerpt.size > 0 %}
+                  <span>{{ article.excerpt }}</span>
+                {% else %}
+                  <span>{{ article.content | strip_html | truncatewords: 10 }}</span>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="container my-2">
+      {% render 'pagination'
+        , paginate: paginate %}
+    </div>
+  {% endpaginate %}
+</div>
+
+{% schema %}
+  {
+    "name": "Blog Section",
+    "class": "col-md-8 col-12",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "banner_image",
+        "name": "Banner Image",
+        "limit": 1
+      }, {
+        "type": "title",
+        "name": "Blog Title",
+        "limit": 1
+      }, {
+        "type": "meta",
+        "name": "Blog Meta",
+        "limit": 1
+      }
+    ],
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      }, {
+        "type": "range",
+        "id": "paginate_article_num",
+        "label": "Number of display articles",
+        "default": 4,
+        "min": 2,
+        "max": 10,
+        "step": 1
+      }
+    ]
+  }
+{% endschema %}
