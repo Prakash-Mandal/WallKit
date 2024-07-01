@@ -21,8 +21,12 @@
 
     {% section 'header' %}
 
-    <main class="container-fluid row" role="main">
-      {{ content_for_layout }}
+    <main class="container my-5" role="main">
+        <div class="row">
+        {{ content_for_layout }}
+        {% comment %} Enable for fixed sidebar {% endcomment %}
+        {% comment %} {% section 'sidebar' %} {% endcomment %}
+        </div>
     </main>
 
     {% section 'footer-section' %}

@@ -1,14 +1,16 @@
-<div class="sidebar-section">
+<div class="sidebar-section col-12 p-2">
   {% for block in section.blocks %}
     {% assign item = block.settings %}
     {% if block.type == 'image' %}
       <div class="mb-4 card">
         <p class="card-header">{{ item.title }}</p>
-        <a class="card-body" href="{{item.url}}">
+        <a class="card-body sidebar-anchor_" href="{{item.url}}">
           <img
-            class="w-100"
-            src="{{item.image |  img_url: 'master'}}"
-            alt="{{item.image.alt}}"></a>
+            class="img-fluid sidebar-image_"
+            src="{{item.image| image_url: width: 800 }}"
+            alt="{{item.image.alt}}"
+            width=""
+            height=""></a>
       </div>
     {% else %}
       <div class="mb-4 border border-info p-2">
@@ -16,7 +18,6 @@
         <p>{{ item.description }}</p>
       </div>
     {% endif %}
-
   {% endfor %}
 </div>
 
@@ -24,6 +25,8 @@
 {% schema %}
   {
     "name": "Sidebar",
+    "class": "col-md-2 col-12 bg-info",
+    "tag": "aside",
     "settings": [],
     "blocks": [
       {
@@ -34,7 +37,7 @@
             "type": "text",
             "id": "title",
             "label": "Title",
-            "default": "Sidebar Title"
+            "default": "Sidebar Image Title"
           }, {
             "type": "image_picker",
             "id": "image",
@@ -59,7 +62,7 @@
             "type": "richtext",
             "id": "description",
             "label": "Description",
-            "default": "<p>This is adescription</p>"
+            "default": "<p>This is a description</p>"
           }
         ]
       }

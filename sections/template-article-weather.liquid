@@ -1,0 +1,61 @@
+
+{% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
+{% capture date %}<time datetime="{{ article.published_at | date: '%d-%m-%Y' }}">{{ article.published_at | date: format: 'abbreviated_date'  }}</time>{% endcapture %}
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'featured_image' %}
+        {% if article.image != blank %}
+          <img
+            src="{{article.image| image_url: width: 1024 }}"
+            class="img-fluid rounded w-100 my-2"
+            alt=""
+            width=""
+            height="">
+        {% endif %}
+      {% when 'title' %}
+        <div class="article-title my-2">
+          <h1 class="display-4">{{ article.title }}</h1>
+        </div>
+      {% when 'meta' %}
+        <div class="article-meta my-2">
+          <figcaption class="blockquote-footer">
+            By {{ author }} published on {{ date }}
+          </figcaption>
+        </div>
+      {% when 'content' %}
+        <div class="my-2">{{ article.content }}</div>
+        {% else %}
+
+    {% endcase %}
+  {% endfor %}
+
+</article>
+
+{% schema %}
+  {
+    "name": "Article Section",
+    "class": "col-md-8 col-12",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "featured_image",
+        "name": "Featured Image",
+        "limit": 1
+      }, {
+        "type": "title",
+        "name": "Article Title",
+        "limit": 1
+      }, {
+        "type": "meta",
+        "name": "Article Meta",
+        "limit": 1
+      }, {
+        "type": "content",
+        "name": "Article Content",
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}

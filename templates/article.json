@@ -1,0 +1,27 @@
+{
+    "layout": "theme-blog-with-sidebar",
+    "sections": {
+        "template": {
+            "type": "template-article",
+            "blocks": {
+                "featured_image": {
+                    "type": "featured_image"
+                },
+                "title": {
+                    "type": "title"
+                },
+                "meta": {
+                    "type": "meta"
+                },
+                "content": {
+                    "type": "content"
+                }
+            },
+            "block_order": ["featured_image","title","meta","content"]
+        },
+        "sidebar": {
+            "type": "sidebar"
+        }
+    },
+    "order": ["template","sidebar"]
+}
